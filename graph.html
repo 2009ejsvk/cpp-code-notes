@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Code Map</title>
+  <link rel="stylesheet" href="./style.css" />
+  <style>
+    .wrap{max-width:1400px;margin:0 auto;padding:14px}
+    .card{border:1px solid #1f2937;background:#0f172a;border-radius:14px;overflow:hidden}
+    .hdr{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid #1f2937;background:#0b1220}
+    .hdr a{color:#34d399;text-decoration:none}
+    #g{padding:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hdr">
+        <div>Code Map</div>
+        <a href="./index.html">Back to Viewer</a>
+      </div>
+      <pre id="g" class="mermaid"></pre>
+    </div>
+  </div>
+
+  <script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+
+    mermaid.initialize({
+      startOnLoad: false,
+      securityLevel: "loose",   // click 링크 허용
+      flowchart: { curve: "linear" }
+    });
+
+    const txt = await fetch("./notes/graph.mmd", { cache: "no-store" }).then(r => {
+      if(!r.ok) throw new Error("Failed to load ./notes/graph.mmd");
+      return r.text();
+    });
+
+    const el = document.getElementById("g");
+    el.textContent = txt;
+
+    await mermaid.run({ querySelector: ".mermaid" });
+  </script>
+</body>
+</html>
