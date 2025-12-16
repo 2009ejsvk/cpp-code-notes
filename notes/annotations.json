@@ -1,27 +1,18 @@
 {
   "Client/main.cpp": [
     {
-      "line": 1,
+      "line": 24,
       "from": "CEngine::GetInst()",
       "to": "Engine/Engine.h",
-      "toLine": 33,
-      "label": "CEngine::GetInst (singleton accessor)"
+      "toLine": 43,
+      "label": "CEngine::GetInst (Engine.h)"
     },
     {
-      "line": 1,
+      "line": 24,
       "from": "Init(",
       "to": "Engine/Engine.cpp",
-      "toLine": 19,
-      "label": "CEngine::Init (implementation)"
-    }
-  ],
-  "Engine/Engine.cpp": [
-    {
-      "line": 27,
-      "from": "CDevice::GetInst()",
-      "to": "Device/Device.h",
-      "toLine": 1,
-      "label": "CDevice::GetInst (add file if you have it)"
+      "toLine": 30,
+      "label": "CEngine::Init (Engine.cpp)"
     }
   ]
 }
