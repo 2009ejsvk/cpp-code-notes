@@ -37,8 +37,8 @@
       flowchart: { curve: "linear" }
     });
 
-    const txt = await fetch("./notes/graph.mmd", { cache: "no-store" }).then(r => {
-      if(!r.ok) throw new Error("Failed to load ./notes/graph.mmd");
+    const txt = await fetch("./notes/graph_overview.mmd", { cache: "no-store" }).then(r => {
+      if(!r.ok) throw new Error("Failed to load ./notes/graph_overview.mmd");
       return r.text();
     });
 
