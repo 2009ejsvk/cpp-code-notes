@@ -19,6 +19,10 @@
       <div class="hdr">
         <div>Code Map</div>
         <a href="./index.html">Back to Viewer</a>
+        <select id="which">
+  <option value="graph_overview.mmd">overview</option>
+  <option value="graph_boot.mmd">boot</option>
+</select>
       </div>
       <pre id="g" class="mermaid"></pre>
     </div>
@@ -42,6 +46,19 @@
     el.textContent = txt;
 
     await mermaid.run({ querySelector: ".mermaid" });
+
+    const select = document.getElementById("which");
+
+async function render(name){
+  const txt = await fetch("./notes/" + name, { cache: "no-store" }).then(r => r.text());
+  const el = document.getElementById("g");
+  el.textContent = txt;
+  await mermaid.run({ querySelector: ".mermaid" });
+}
+
+select.addEventListener("change", () => render(select.value));
+render(select.value);
+
   </script>
 </body>
 </html>
