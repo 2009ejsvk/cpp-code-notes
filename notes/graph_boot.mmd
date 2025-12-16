@@ -1,0 +1,7 @@
+flowchart LR
+  A[Client/main.cpp<br/>wWinMain] --> B[CEngine::GetInst()]
+  B --> C[CEngine::Init(...)]
+
+  click A "index.html#file=Client/main.cpp&line=19" "wWinMain (Client/main.cpp)"
+  click B "index.html#file=Engine/Engine.h&line=43" "CEngine::GetInst (Engine.h)"
+  click C "index.html#file=Engine/Engine.cpp&line=30" "CEngine::Init (Engine.cpp)"
