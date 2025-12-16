@@ -1,0 +1,21 @@
+{
+  "files": [
+    {
+      "path": "Client/main.cpp",
+      "kind": "cpp"
+    },
+    {
+      "path": "Engine/Engine.h",
+      "kind": "h"
+    },
+    {
+      "path": "Engine/Engine.cpp",
+      "kind": "cpp"
+    }
+  ],
+  "notes": {
+    "Client/main.cpp": "## Client/main.cpp\\n\\n- 진입점(wWinMain)에서 엔진 초기화 및 메인 루프를 수행합니다.",
+    "Engine/Engine.h": "## Engine/Engine.h\\n\\n- CEngine 싱글톤 인터페이스 및 주요 API 선언부입니다.",
+    "Engine/Engine.cpp": "## Engine/Engine.cpp\\n\\n- CEngine 초기화/루프/윈도우 생성 등 구현부입니다."
+  }
+}
