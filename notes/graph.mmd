@@ -1,23 +1,61 @@
 flowchart LR
-  %% ===== 엔트리 =====
-  A[Client/main.cpp<br/>wWinMain] --> B[CEngine::Init]
-  A --> R[CEngine::Run]
-  R --> L[CEngine::Logic]
+  %% ======================
+  %% Client Entry
+  %% ======================
+  ClientMain[Client/main.cpp<br/>wWinMain]
 
-  %% ===== Init 내부 흐름(예시) =====
-  B --> D[CDevice::Init]
-  B --> AM[CAssetManager::Init]
-  B --> WM[CWorldManager::Init]
-  B --> T[CTimer::Init]
+  %% ======================
+  %% Core Engine
+  %% ======================
+  Engine[GameEngine/Engine]
+  Device[Device]
+  Timer[Timer]
 
-  %% ===== 클릭하면 기존 뷰어로 점프 =====
-  click A "index.html#file=Client/main.cpp&line=1" "Client/main.cpp"
-  click B "index.html#file=Engine/Engine.cpp&line=19" "CEngine::Init (Engine.cpp)"
-  click R "index.html#file=Engine/Engine.cpp&line=48" "CEngine::Run (Engine.cpp)"
-  click L "index.html#file=Engine/Engine.cpp&line=78" "CEngine::Logic (Engine.cpp)"
+  %% ======================
+  %% World / Object
+  %% ======================
+  WorldMgr[WorldManager]
+  World[World]
+  GameObject[GameObject]
+  Component[Component]
+  SceneComponent[SceneComponent]
+  MeshComponent[MeshComponent]
 
-  %% 아래는 네가 파일 추가하면 연결
-  %% click D  "index.html#file=Device/Device.cpp&line=1" "CDevice::Init"
-  %% click AM "index.html#file=Asset/AssetManager.cpp&line=1" "CAssetManager::Init"
-  %% click WM "index.html#file=World/WorldManager.cpp&line=1" "CWorldManager::Init"
-  %% click T  "index.html#file=Timer/Timer.cpp&line=1" "CTimer::Init"
+  %% ======================
+  %% Asset System
+  %% ======================
+  AssetMgr[AssetManager]
+  PathMgr[PathManager]
+
+  ShaderMgr[ShaderManager]
+  Shader[Shader]
+  GraphicShader[GraphicShader]
+  ComputeShader[ComputeShader]
+
+  MeshMgr[MeshManager]
+  Mesh[Mesh]
+
+  %% ======================
+  %% Flow
+  %% ======================
+  ClientMain --> Engine
+  Engine --> Device
+  Engine --> Timer
+  Engine --> WorldMgr
+  Engine --> AssetMgr
+
+  WorldMgr --> World
+  World --> GameObject
+  GameObject --> Component
+  Component --> SceneComponent
+  SceneComponent --> MeshComponent
+
+  AssetMgr --> PathMgr
+  AssetMgr --> ShaderMgr
+  AssetMgr --> MeshMgr
+
+  ShaderMgr --> Shader
+  Shader --> GraphicShader
+  Shader --> ComputeShader
+
+  MeshMgr --> Mesh
